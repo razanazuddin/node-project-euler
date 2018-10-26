@@ -1,21 +1,36 @@
-/* https://projecteuler.net/problem=5
+/* https://projecteuler.net/problem=4
  *
- * Smallest multiple
- * 
- * 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
- * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
- */
+ * Largest palindrome product
+ *
+ * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+ * Find the largest palindrome made from the product of two 3-digit numbers.
+*/
 
-// LCM (least common multiple) of 1 to 10 is 2520, LCM of 1 to 20 is?
+// 100 ≤ n ≤ 999
+// 11000 * n - 9901 * (n / 10) - 989 * (n / 100)
 
-function smallestMultiple(factors) {
-  var found = false;
+function isPalindrome(x) {
+  var pal = parseInt(x.toString().split('').reverse().join(''));
 
-  for(var number = 1; !found; number++) {
-    found = factors.every(factor => number % factor === 0);
-  }
-  
-  return number - 1;
+  if(pal === x)
+    return true;
+  else
+    return false;
 }
 
-console.log(smallestMultiple([11, 12, 13, 14, 15, 16, 17, 18, 19,20]));
+function find_palindrome(from, to) {
+	var x, y, product, max = 0;
+
+  for(x = from; x <= to; x++) {
+    for(y = x; y <= to; y++) {
+      product = x * y;
+      if (isPalindrome(product)) {
+        if(max < product) { // this is new
+          return product;
+        }
+      }
+    }
+  }
+}
+
+console.log(find_palindrome(100, 999));
