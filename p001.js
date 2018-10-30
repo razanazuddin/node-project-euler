@@ -9,8 +9,8 @@
 // (sum of multiples of 3) + (sum of multiples of 5) – (sum of multiples of 15)
 
 function sum_of_multiples(multiple, max) {
-	let n = (max - 1) / multiple;
-	return n * (n + 1) / 2 * multiple;
+  let n = (max - 1) / multiple;
+  return n * (n + 1) / 2 * multiple;
 }
 
 console.log(sum_of_multiples(3, 1000) + sum_of_multiples(5, 1000) - sum_of_multiples(15, 1000));
